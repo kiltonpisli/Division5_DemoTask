@@ -9,6 +9,9 @@ export const api = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
     endpoints: (builder) => ({
+        getTrending: builder.query<Movie[], void>({
+            query: () => `trending/movie/week?api_key=${API_KEY}`,
+        }),
         getCategories: builder.query<Category[], void>({
             query: () => `genre/movie/list?api_key=${API_KEY}`,
         }),
@@ -24,4 +27,4 @@ export const api = createApi({
     }),
 })
 
-export const { useGetCategoriesQuery, useGetMoviesByCategoryQuery, useGetMoviesDetailsQuery, useGetMoviesBySearchQuery } = api;
+export const { useGetTrendingQuery, useGetCategoriesQuery, useGetMoviesByCategoryQuery, useGetMoviesDetailsQuery, useGetMoviesBySearchQuery } = api;
