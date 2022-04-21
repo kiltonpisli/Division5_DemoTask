@@ -1,11 +1,13 @@
 import React from 'react';
-// import 'wmr';
 import styles from './Header.module.css';
 
 const Header = () => {
   return (
     <div className={styles.body}>
-      Header
+      <form>
+        <input type="text" />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   )
 }
