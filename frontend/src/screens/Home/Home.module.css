@@ -1,4 +1,30 @@
-/* .body{
-    width: 100%;
-    background-color: #333;
-} */
+.flexbox{
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: -350px;
+}
+.category{
+    padding: 10px 20px;
+    background: #233a50;
+    border: 2px solid #428bca;
+    color: #428bca;
+    width: 250px;
+    aspect-ratio: 3/1;
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: .3s;
+    border-radius: 15px;
+}
+.category:hover{
+    color: #abb7c4;
+}
+.h3{
+    position: relative;
+    margin: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}

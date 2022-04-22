@@ -1,3 +1,30 @@
 .body{
-    background-color: #333;
+    /* background-color: #333; */
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+.form{
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    min-width: 300px;
+    display: flex;
+}
+.input, .submit{
+    background: #233a50;
+    border: 2px solid #428bca;
+    /* color: #428bca; */
+    color: #abb7c4;
+}
+.input{
+    padding: 10px 15px;
+    flex: 1;
+    outline: none;
+}
+.submit{
+    padding: 0 15px;
 }
