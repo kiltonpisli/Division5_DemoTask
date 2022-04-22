@@ -20,7 +20,7 @@ const Home = () => {
         <div className={styles.flexbox}>
           {data?.genres.map(cat => (
             <Link key={cat.id} className={styles.category} to={`/category/${cat.id}`}>
-              <h3 key={cat.id} className={styles.h3}>{cat.name}</h3>
+              <h3 className={styles.h3}>{cat.name}</h3>
             </Link>
           ))}
         </div>

@@ -6,10 +6,12 @@ interface Props{
     img?: string
 }
 
-const Banner = ({ img = Background } :Props) => {
+const Banner = ({ img } :Props) => {
+  const url = img ? `https://image.tmdb.org/t/p/original/${img}` : Background;
+
   return (
     <div className={styles.body}>
-        <img src={img} className={styles.img} />
+        <img src={url} className={styles.img} />
     </div>
   )
 }

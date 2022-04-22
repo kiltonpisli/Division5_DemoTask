@@ -1,0 +1,14 @@
+.flexbox{
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: -350px;
+    max-width: 1400px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.a{
+    text-decoration: none;
+}
