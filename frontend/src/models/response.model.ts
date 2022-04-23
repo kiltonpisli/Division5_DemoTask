@@ -23,10 +23,19 @@ export interface Movie{
     vote_average: number,
     vote_count: number,
     genres: Category[],
-    runtime: number
+    runtime: number,
+    belongs_to_collection: Movie_BelongsToCollection,
+    tagline: string
 }
 export interface MovieList{
     item_count: number,
     items: Movie[],
     poster_path: string,
+}
+
+interface Movie_BelongsToCollection{
+    backdrop_path: string
+    id: number
+    name: string
+    poster_path: string
 }

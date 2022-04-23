@@ -9,7 +9,7 @@ const Category = () => {
     const { id } = useParams();
     const { data, isSuccess, isLoading, isError} = useGetMoviesByCategoryQuery(id!);
 
-    console.log(data);
+    // console.log(data);
 
     return (
         <>
@@ -21,6 +21,10 @@ const Category = () => {
 
             {isSuccess && (
                 <div className={styles.flexbox}>
+                    {(data?.item_count === 0) && (
+                        <h1>0 Items</h1>
+                    )}
+                    
                     {data?.items.map(movie => (
                     <Link key={movie.id} className={styles.a} to={`/movie/${movie.id}`}>
                         <Movie movie={movie}/>

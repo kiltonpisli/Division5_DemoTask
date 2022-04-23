@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './screens/Home';
 import Category from './screens/Category';
-import Movie from './screens/Movie';
+import Moviee from './screens/Movie';
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route
           path="movie/:id"
           element={
-            <Movie />
+            <Moviee />
           }
         />
       </Routes>

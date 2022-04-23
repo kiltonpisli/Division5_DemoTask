@@ -1,0 +1,39 @@
+.flexbox{
+    display: flex;
+    gap: 50px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: -350px;
+    max-width: 1400px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 50px;
+}
+.poster{
+    width: 300px;
+    aspect-ratio: 3/4;
+    position: relative;
+}
+.poster img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-fit: cover;
+}
+.detals{
+    flex: 1;
+}
+.detals h1{
+    margin: 0 0 5px;
+}
+.detals p{
+    margin: 0;
+}
+.detals h3{
+    margin: 20px 0 5px;
+}
+.category{
+    color: #fff;
+    margin-right: 15px;
+}
