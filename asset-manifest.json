@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Division5_DemoTask/static/css/main.46007e5f.css",
+    "main.js": "/Division5_DemoTask/static/js/main.c7f4b39c.js",
+    "static/media/banner1.jpg": "/Division5_DemoTask/static/media/banner1.bbd3106a1d41e2797232.jpg",
+    "index.html": "/Division5_DemoTask/index.html",
+    "main.46007e5f.css.map": "/Division5_DemoTask/static/css/main.46007e5f.css.map",
+    "main.c7f4b39c.js.map": "/Division5_DemoTask/static/js/main.c7f4b39c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.46007e5f.css",
+    "static/js/main.c7f4b39c.js"
+  ]
+}
