@@ -1,30 +1,30 @@
-import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit';
 
-interface Search{
-    id: string,
-    value: string,
+interface SearchHistory{
+    searchHistory: string[]
 }
 
 export const searchSlice = createSlice({
   name: 'search',
-  initialState: [] as Search[],
+  initialState: {
+      searchHistory: []
+  } as SearchHistory,
   reducers: {
-    addSearch:{
-        reducer: (state, action: PayloadAction<Search>) => {
-            state.push(action.payload);
-        },
-        prepare: (value: string) => {
-            const id = nanoid();
-            return { payload: { id, value } }
-        },
+    addSearch(state, action: PayloadAction<string>){
+        // debugger
+        if(state.searchHistory.includes(action.payload)){
+            state.searchHistory = state.searchHistory.filter(item => item !== action.payload)
+        }
+
+        state.searchHistory.unshift(action.payload);
     },
     deleteSearch(state, action: PayloadAction<string>){
-        const id = action.payload;
-        return state.filter(item => item.id !== id);
+        state.searchHistory = state.searchHistory.filter(item => item !== action.payload);
     }
   },
 })
 
+export const getSearchHistory = (state: { search: SearchHistory }) => state.search.searchHistory;
+
 export const { addSearch, deleteSearch } = searchSlice.actions
-export const getAllSearch = (state: { search: Search[] }) => state.search;
 export default searchSlice.reducer

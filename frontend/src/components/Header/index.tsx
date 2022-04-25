@@ -3,13 +3,14 @@ import { useNavigate, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
-import { addSearch, deleteSearch, getAllSearch } from '../../redux/reducers/search';
+import { addSearch, deleteSearch, getSearchHistory } from '../../redux/reducers/search';
 import styles from './Header.module.css';
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const searchHistory = useSelector(getAllSearch);
+  const searchHistory = useSelector(getSearchHistory);
+
   useEffect(() => {
     console.log(searchHistory);
   }, [searchHistory])
@@ -40,7 +41,10 @@ const Header = () => {
     <div className={styles.body}>
       <form className={styles.form} onSubmit={handleSearch}>
         <input 
-          type="text" onChange={onChange} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)}
+          type="text" onChange={onChange} onFocus={() => setFocused(true)} 
+          onBlur={() => {
+            setTimeout(() => {setFocused(false)}, 100) 
+          }}
           placeholder='Search for Movie...' 
           className={styles.input}
         />
@@ -49,10 +53,10 @@ const Header = () => {
         </button>
       </form>
       <ul className={`${styles.search_history} ${(focused)?styles.active:""}`}>
-        {searchHistory.map(item => (
-          <li key={item.id}>
-            <Link to={`/search/${item.id}`}>{item.value}</Link> 
-            <FontAwesomeIcon icon={faXmark} onClick={() => handleDelete(item.id)}></FontAwesomeIcon>
+        {searchHistory.map( (item, i) => (
+          <li key={i}>
+            <Link to={`/search/${item}`}>{item}</Link> 
+            <FontAwesomeIcon icon={faXmark} onClick={() => handleDelete(item)}></FontAwesomeIcon>
           </li>
         ))}
       </ul>
