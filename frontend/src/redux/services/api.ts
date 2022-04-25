@@ -23,4 +23,9 @@ export const api = createApi({
     }),
 })
 
-export const { useGetCategoriesQuery, useGetMoviesByCategoryQuery, useGetMoviesDetailsQuery, useGetMoviesBySearchQuery } = api;
+export const { useGetCategoriesQuery, 
+    useGetMoviesByCategoryQuery, 
+    useGetMoviesDetailsQuery, 
+    useGetMoviesBySearchQuery,
+    useLazyGetMoviesBySearchQuery
+} = api;

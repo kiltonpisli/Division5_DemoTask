@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import { addSearch, deleteSearch, getSearchHistory } from '../../redux/reducers/search';
+import { useLazyGetMoviesBySearchQuery } from '../../redux/services/api';
+import { Movie } from '../../models/response.model';
 import styles from './Header.module.css';
 
 const Header = () => {
@@ -11,15 +13,19 @@ const Header = () => {
   const navigate = useNavigate();
   const searchHistory = useSelector(getSearchHistory);
 
-  useEffect(() => {
-    console.log(searchHistory);
-  }, [searchHistory])
-  
   const [search, setSearch] = useState("");
+  const [liveSearch, setLiveSearch] = useState<Movie[]>();
   const [focused, setFocused] = useState(false);
-
+  
+  const [liveSearchTrigger, searchReq] = useLazyGetMoviesBySearchQuery();
+  
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     setSearch(e.currentTarget.value);
+
+    liveSearchTrigger(e.currentTarget.value).unwrap().then(() => {
+      const autocomplete = searchReq?.data?.results.slice(0, 3);
+      setLiveSearch(autocomplete);
+    });
   }
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,8 +39,8 @@ const Header = () => {
     }
   }
 
-  const handleDelete = (id: string) => {
-    dispatch(deleteSearch(id));
+  const handleDelete = (value: string) => {
+    dispatch(deleteSearch(value));
   }
 
   return (
@@ -53,9 +59,16 @@ const Header = () => {
         </button>
       </form>
       <ul className={`${styles.search_history} ${(focused)?styles.active:""}`}>
-        {searchHistory.map( (item, i) => (
+        {liveSearch?.map((item, i) => (
           <li key={i}>
-            <Link to={`/search/${item}`}>{item}</Link> 
+            <Link to={`/movie/${item.id}`}><b>{item.title}</b></Link>
+          </li>
+        ))}
+        {searchHistory.map((item, i) => (
+          <li key={i}>
+            <Link to={`/search/${item}`}>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />{item}
+            </Link>
             <FontAwesomeIcon icon={faXmark} onClick={() => handleDelete(item)}></FontAwesomeIcon>
           </li>
         ))}

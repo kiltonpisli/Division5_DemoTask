@@ -11,7 +11,6 @@ export const searchSlice = createSlice({
   } as SearchHistory,
   reducers: {
     addSearch(state, action: PayloadAction<string>){
-        // debugger
         if(state.searchHistory.includes(action.payload)){
             state.searchHistory = state.searchHistory.filter(item => item !== action.payload)
         }
