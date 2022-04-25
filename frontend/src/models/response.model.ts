@@ -1,3 +1,9 @@
+interface Movie_BelongsToCollection{
+    backdrop_path: string
+    id: number
+    name: string
+    poster_path: string
+}
 export interface Category{
     "id": string,
     "name": string
@@ -32,10 +38,9 @@ export interface MovieList{
     items: Movie[],
     poster_path: string,
 }
-
-interface Movie_BelongsToCollection{
-    backdrop_path: string
-    id: number
-    name: string
-    poster_path: string
+export interface SearchResponse{
+    page: number,
+    results: Movie[],
+    total_pages: number,
+    total_results: number,
 }

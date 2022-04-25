@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Categories, MovieList, Movie } from '../../models/response.model'
+import { Categories, MovieList, Movie, SearchResponse } from '../../models/response.model'
 
 const BASE_URL = "https://api.themoviedb.org/3/";
 const API_KEY = "c446dcddc40919bea1c8e8580a9a40b7";
@@ -17,7 +17,7 @@ export const api = createApi({
         getMoviesDetails: builder.query<Movie, string>({
             query: (movieId) => `movie/${movieId}?api_key=${API_KEY}`,
         }),
-        getMoviesBySearch: builder.query<Movie[], string>({
+        getMoviesBySearch: builder.query<SearchResponse, string>({
             query: (search) => `search/movie?api_key=${API_KEY}&query=${search}`,
         }),
     }),
