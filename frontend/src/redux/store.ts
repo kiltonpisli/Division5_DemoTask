@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import favoritesReducer from './reducers/favorites';
+import searchReducer from './reducers/search';
 import { api } from './services/api';
 
 export const store = configureStore({
   reducer: {
-    favorites: favoritesReducer,
+    search: searchReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>

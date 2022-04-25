@@ -1,5 +1,5 @@
 .body{
-    padding: 20px;
+    padding: 20px 50px;
     position: absolute;
     width: 100%;
     z-index: 1;
@@ -9,7 +9,7 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
+    width: 100%;
     min-width: 300px;
     display: flex;
     max-width: 1400px;
@@ -27,4 +27,49 @@
 }
 .submit{
     padding: 0 15px;
+}
+
+.search_history{
+    display: none;
+    margin: 0;
+    padding: 0;
+    background: #000a;
+    list-style: none;
+    max-height: 400px;
+    overflow-y: scroll;
+    max-width: 1400px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.active{
+    display: block;
+}
+.search_history li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    padding: 0px 10px;
+}
+.search_history li:hover{
+    background-color: #000;
+}
+.search_history li:hover a{
+    color: #428bca;
+}
+.search_history li a{
+    flex: 1;
+    padding: 10px 5px;
+    color: #fff;
+    text-decoration: none;
+}
+.search_history li svg{
+    font-size: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #777;
+}
+.search_history li svg:hover{
+    color: #fff;
 }
