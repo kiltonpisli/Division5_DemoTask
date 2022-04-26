@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faXmark, faHouseChimney } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch, useSelector } from 'react-redux';
 import { addSearch, deleteSearch, getSearchHistory } from '../../redux/reducers/search';
 import { useLazyGetMoviesBySearchQuery } from '../../redux/services/api';
@@ -46,6 +46,9 @@ const Header = () => {
   return (
     <div className={styles.body}>
       <form className={styles.form} onSubmit={handleSearch}>
+        <Link to="/">
+          <FontAwesomeIcon icon={faHouseChimney} />
+        </Link>
         <input 
           type="text" onChange={onChange} onFocus={() => setFocused(true)} 
           onBlur={() => {
@@ -58,6 +61,7 @@ const Header = () => {
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
       </form>
+
       <ul className={`${styles.search_history} ${(focused)?styles.active:""}`}>
         {liveSearch?.map((item, i) => (
           <li key={i}>
