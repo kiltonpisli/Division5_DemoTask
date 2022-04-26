@@ -4,10 +4,12 @@ import Banner from '../../components/Banner';
 import Movie from '../../components/Movie';
 import styles from './Search.module.css';
 import { useGetMoviesBySearchQuery } from '../../redux/services/api';
+import useInfiniteScrolling from '../../customHooks/useInfiniteScrolling';
 
 const Search = () => {
     const { toSearch } = useParams();
     const { data, isSuccess, isLoading, isError} = useGetMoviesBySearchQuery(toSearch!);
+    const { moviesToShow } = useInfiniteScrolling(data?.results, 10, 5);
 
     // console.log(data);
 
@@ -25,7 +27,7 @@ const Search = () => {
                         <h1>0 Items</h1>
                     )}
                     
-                    {data?.results.map(movie => (
+                    {moviesToShow?.map(movie => (
                     <Link key={movie.id} className={styles.a} to={`/movie/${movie.id}`}>
                         <Movie movie={movie}/>
                     </Link>
