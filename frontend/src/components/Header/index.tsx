@@ -17,13 +17,13 @@ const Header = () => {
   const [liveSearch, setLiveSearch] = useState<Movie[]>();
   const [focused, setFocused] = useState(false);
   
-  const [liveSearchTrigger, searchReq] = useLazyGetMoviesBySearchQuery();
+  const [liveSearchTrigger, searchResponse] = useLazyGetMoviesBySearchQuery();
   
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     setSearch(e.currentTarget.value);
 
     liveSearchTrigger(e.currentTarget.value).unwrap().then(() => {
-      const autocomplete = searchReq?.data?.results.slice(0, 3);
+      const autocomplete = searchResponse?.data?.results.slice(0, 3);
       setLiveSearch(autocomplete);
     });
   }
@@ -52,7 +52,7 @@ const Header = () => {
         <input 
           type="text" onChange={onChange} onFocus={() => setFocused(true)} 
           onBlur={() => {
-            setTimeout(() => {setFocused(false)}, 100) 
+            setTimeout(() => {setFocused(false)}, 300) 
           }}
           placeholder='Search for Movie...' 
           className={styles.input}
