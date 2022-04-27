@@ -8,7 +8,7 @@ import { useGetMoviesDetailsQuery } from '../../redux/services/api';
 
 const Movie = () => {
     const { id } = useParams();
-    const { data, isSuccess, isLoading, isError} = useGetMoviesDetailsQuery(id!);
+    const { data, isSuccess, isLoading } = useGetMoviesDetailsQuery(id!);
 
     // console.log(data);
 
@@ -23,7 +23,7 @@ const Movie = () => {
             {isSuccess && (
                 <div className={styles.flexbox}>
                     <div className={styles.poster}>
-                        <img src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`} width="300px"/>
+                        <img src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`} width="300px" alt='backdrop image'/>
                     </div>
                     
                     <div className={styles.detals}>

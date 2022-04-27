@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
+import React from 'react'
 import { useParams, Link } from 'react-router-dom';
 import Banner from '../../components/Banner';
 import Movie from '../../components/Movie';

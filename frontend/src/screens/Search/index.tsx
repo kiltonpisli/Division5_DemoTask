@@ -8,7 +8,7 @@ import useInfiniteScrolling from '../../customHooks/useInfiniteScrolling';
 
 const Search = () => {
     const { toSearch } = useParams();
-    const { data, isSuccess, isLoading, isError} = useGetMoviesBySearchQuery(toSearch!);
+    const { data, isSuccess, isLoading } = useGetMoviesBySearchQuery(toSearch!);
     const { moviesToShow } = useInfiniteScrolling(data?.results, 10, 5);
 
     // console.log(data);
